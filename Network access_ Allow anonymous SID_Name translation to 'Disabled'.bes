@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Network access: Allow anonymous SID/Name translation to 'Disabled'</Title>
+		<Description><![CDATA[<div class=FixletMessage><TABLE><TBODY><TR><TD><p><code>This policy setting determines whether an anonymous user can request security identifier (SID) attributes for another user, or use a SID to obtain its corresponding user name. Disable this policy setting to prevent unauthenticated users from obtaining user names that are associated with their respective SIDs.</code><hr><p>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "eaa127b7-3c1b-61be-6b96-ab101372b431" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></TD></TR></TBODY></TABLE></div>]]></Description>
+		<Relevance><![CDATA[not exists 1 whose (exists (concatenation ", " of (it as string) of ((it != 0) of it = (it != 0) of 0) of (if exist selects "Setting from RSOP_SecuritySettingBoolean where KeyName=%22lsaanonymousnamelookup%22 and Precedence=1" of it then ((if it then 1 else 0) of boolean value of selects ((if exist matches (case insensitive regex "RSOP_Security") of it then ((if not (x64 of it and name of it = "WinVista" and service pack major version of it = 0) of operating system then it else error "52903: WMI query not supported under Vista x64 SP0: " & it)) else it) of "Setting from RSOP_SecuritySettingBoolean where KeyName=%22lsaanonymousnamelookup%22 and Precedence=1") of it) else (if exists key "HKEY_LOCAL_MACHINE\SECURITY\Policy\SecDesc" of it then ((if it then 1 else 0) of (not bit 0 of it) of (hexadecimal integer it) of concatenation of characters (56; 57) of (default value of key "HKEY_LOCAL_MACHINE\SECURITY\Policy\SecDesc" of it as string)) else 0) of x32 registry) of wmi "root\RSOP\Computer") whose (number of substrings separated by ", " whose (it is not "") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0))]]></Relevance>
+		<Category>Network Access</Category>
+		<Source>Maxim's Hardening Guide</Source>
+		<SourceID>6-4</SourceID>
+		<SourceReleaseDate>2018-03-08</SourceReleaseDate>
+		<SourceSeverity>Medium</SourceSeverity>
+		<MIMEField>
+			<Name>x-fixlet-scm-control</Name>
+			<Value>6-4</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-id</Name>
+			<Value>daeb6399-1f5c-f044-3294-903d48ace2a9</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-category</Name>
+			<Value>Network Access</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-metadata</Name>
+			<Value>{"scm_parameters":{"PARAM_NAME":{"default_value":"","human_default_value":"","desired_value":"","human_desired_value":"Disabled","hidden":false,"title":"Setting:","type":"string","description":""},"Value":{"measured_value_analysis_property":1,"measured_value_analysis_idref":"eaa127b7-3c1b-61be-6b96-ab101372b431"}},"title":"6-4 : Network access: Allow anonymous SID/Name translation to 'Disabled'","description":"This policy setting determines whether an anonymous user can request security identifier (SID) attributes for another user, or use a SID to obtain its corresponding user name. Disable this policy setting to prevent unauthenticated users from obtaining user names that are associated with their respective SIDs."}</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-os</Name>
+			<Value>OS-MULTI</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-sentinel-idref</Name>
+			<Value>4c2b71b6-6124-52e1-8c96-91d3c9e0840c</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Fri, 27 Apr 2018 23:13:33 +0000</Value>
+		</MIMEField>
+		<Domain>SCVM</Domain>
+		<Action ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to remediate this issue.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">"delete ""{name of drive of system folder}\bf5f74be44e95122895dc808edfeec1b.ini""
+createfile until HERE
+[Unicode]
+Unicode=yes
+[Version]
+signature=""$CHICAGO$""
+Revision=1 
+[System Access]
+LsaAnonymousNameLookup = 0
+HERE
+copy __createfile ""{name of drive of system folder}\bf5f74be44e95122895dc808edfeec1b.ini""
+waithidden ""{pathname of system folder}\secedit.exe"" /configure /db ""{name of drive of system folder}\bf5f74be44e95122895dc808edfeec1b.sdb"" /cfg ""{name of drive of system folder}\bf5f74be44e95122895dc808edfeec1b.ini"" /quiet
+delete ""{name of drive of system folder}\bf5f74be44e95122895dc808edfeec1b.sdb""
+delete ""{name of drive of system folder}\bf5f74be44e95122895dc808edfeec1b.ini""
+"</ActionScript>
+		</Action>
+	</Fixlet>
+</BES>

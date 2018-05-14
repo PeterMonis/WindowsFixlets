@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Interactive logon: Do not display last user name to 'Enabled'</Title>
+		<Description><![CDATA[<div class=FixletMessage><TABLE><TBODY><TR><TD><p><code>This policy setting determines whether the account name of the last user to log on to the client computers in your organization will be displayed in each computer's respective Windows logon screen. Enable this policy setting to prevent intruders from collecting account names visually from the screens of desktop or laptop computers in your organization.</code><hr><p>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "9ec608fa-979d-4977-7c97-8f7d4371da70" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></TD></TR></TBODY></TABLE></div>]]></Description>
+		<Relevance><![CDATA[not exists 1 whose (exists (concatenation ", " of (it as string) of ((type of it = "REG_DWORD") of it and ((if (type of it = "REG_BINARY") then (hexadecimal integer (it as string)) else (it as integer)) of it = (it as integer) of ("1"))) of values "DontDisplayLastUserName" of keys "Software\Microsoft\Windows\CurrentVersion\Policies\System" of keys "HKEY_LOCAL_MACHINE" of native registry) whose (number of substrings separated by ", " whose (it is not "") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0))]]></Relevance>
+		<Category>Interactive logon</Category>
+		<Source>Maxim's Hardening Guide</Source>
+		<SourceID>6-2</SourceID>
+		<SourceReleaseDate>2018-03-08</SourceReleaseDate>
+		<SourceSeverity>Medium</SourceSeverity>
+		<MIMEField>
+			<Name>x-fixlet-scm-control</Name>
+			<Value>6-2</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-id</Name>
+			<Value>bf86980e-7989-ab7b-4172-4f46559f535c</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-category</Name>
+			<Value>Interactive logon</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-metadata</Name>
+			<Value>{"scm_parameters":{"PARAM_NAME":{"default_value":"","human_default_value":"","desired_value":"","human_desired_value":"Enabled","hidden":false,"title":"Setting:","type":"string","description":""},"Value":{"measured_value_analysis_property":1,"measured_value_analysis_idref":"9ec608fa-979d-4977-7c97-8f7d4371da70"}},"title":"6-2 : Interactive logon: Do not display last user name to 'Enabled'","description":"This policy setting determines whether the account name of the last user to log on to the client computers in your organization will be displayed in each computer's respective Windows logon screen. Enable this policy setting to prevent intruders from collecting account names visually from the screens of desktop or laptop computers in your organization."}</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-os</Name>
+			<Value>OS-MULTI</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-sentinel-idref</Name>
+			<Value>4c2b71b6-6124-52e1-8c96-91d3c9e0840c</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Fri, 27 Apr 2018 23:13:33 +0000</Value>
+		</MIMEField>
+		<Domain>SCVM</Domain>
+		<Action ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to remediate this issue.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">waithidden "{pathname of system folder}\reg.exe" add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v "DontDisplayLastUserName" /t REG_DWORD /d 1 /f</ActionScript>
+		</Action>
+	</Fixlet>
+</BES>

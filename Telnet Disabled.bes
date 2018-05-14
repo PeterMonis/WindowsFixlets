@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Telnet Disabled</Title>
+		<Description><![CDATA[<DIV class=FixletMessage>
+<TABLE>
+<TBODY>
+<TR>
+<TD>
+<P><CODE>Telnet Disabled <BR><BR>Disabled</CODE> 
+<HR>
+
+<P>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "eb67c969-65e8-0228-e10c-2f994ebf8ae0" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></P></TD></TR></TBODY></TABLE></DIV>]]></Description>
+		<Relevance><![CDATA[not exists 1 whose (exists (concatenation ", " of (it as string) of ((if it = "auto" then 2 else if it = "demand" then 3 else if it = "disabled" then 4 else error ("do not recognize start type: " & it)) of start type of it = 4) of services whose (service name of it as lowercase = "tlntsvr" as lowercase)) whose (number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0))]]></Relevance>
+		<Category>Services</Category>
+		<Source>Maxim's Hardening Guide</Source>
+		<SourceID>1-1</SourceID>
+		<SourceReleaseDate>2018-02-22</SourceReleaseDate>
+		<SourceSeverity>Medium</SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<MIMEField>
+			<Name>x-fixlet-scm-control</Name>
+			<Value>SEG-12-1-1</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-id</Name>
+			<Value>47976e49-5851-c474-5fd1-d6e541b027ad</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-category</Name>
+			<Value>Services</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-os</Name>
+			<Value>OS-MULTI</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-metadata</Name>
+			<Value><![CDATA[{"scm_parameters":{"PARAM_NAME":{"default_value":"","human_default_value":"","desired_value":"","human_desired_value":"Disabled","hidden":false,"title":"Telnet  Service","type":"string","description":""},"Value":{"measured_value_analysis_property":1,"measured_value_analysis_idref":"eb67c969-65e8-0228-e10c-2f994ebf8ae0"}},"title":"SEG-12-1-1 : Telnet Disabled","description":"Telnet Disabled\t<br><br>Disabled"}]]></Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-sentinel-idref</Name>
+			<Value>4c879d73-9f1b-5507-840d-895077d6a800</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Fri, 27 Apr 2018 23:13:33 +0000</Value>
+		</MIMEField>
+		<Domain>SCVM</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to deploy this action.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">waithidden "{pathname of system folder}\sc.exe" config tlntsvr start= disabled
+
+waithidden "{pathname of system folder}\sc.exe" stop tlntsvr</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>User Account control: Switch to the secure desktop when prompting for elevation</Title>
+		<Description><![CDATA[<DIV class=FixletMessage>
+<TABLE>
+<TBODY>
+<TR>
+<TD>
+<P><CODE>User Account control: Switch to the secure desktop when prompting for elevation<BR><BR>Enabled</CODE> 
+<HR>
+
+<P>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "e09782e6-6550-6d3a-b747-5953c9ed0194" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></P></TD></TR></TBODY></TABLE></DIV>]]></Description>
+		<Relevance><![CDATA[not exists 1 whose (exists (concatenation ", " of (it as string) of ((type of it = "REG_DWORD") of it and ((if (type of it = "REG_BINARY" or type of it = "REG_NONE") then (hexadecimal integer (it as string)) else (it as integer)) of it = (it as integer) of ("1"))) of values "PromptOnSecureDesktop" of keys "Software\Microsoft\Windows\CurrentVersion\Policies\System" of keys "HKEY_LOCAL_MACHINE" of native registry) whose (number of substrings separated by ", " whose (it is not "") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0))]]></Relevance>
+		<Category>Security Options – User Account Control</Category>
+		<Source>Maxim's Hardening Guide</Source>
+		<SourceID>4-7</SourceID>
+		<SourceReleaseDate>2018-02-22</SourceReleaseDate>
+		<SourceSeverity>Medium</SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<MIMEField>
+			<Name>x-fixlet-scm-control</Name>
+			<Value>SEG-12-2-2-3-1-7</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-id</Name>
+			<Value>764d2235-9c6a-daaf-f363-23aa69567d63</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-category</Name>
+			<Value>Security Options – User Account Control</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-os</Name>
+			<Value>OS-MULTI</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-metadata</Name>
+			<Value><![CDATA[{"scm_parameters":{"PARAM_NAME":{"default_value":"","human_default_value":"","desired_value":"","human_desired_value":"Enabled","hidden":false,"title":"User Account control: Switch to the secure desktop when prompting for elevation","type":"string","description":""},"Value":{"measured_value_analysis_property":1,"measured_value_analysis_idref":"e09782e6-6550-6d3a-b747-5953c9ed0194"}},"title":"SEG-12-2-2-3-1-7 : User Account control: Switch to the secure desktop when prompting for elevation","description":"User Account control: Switch to the secure desktop when prompting for elevation<br><br>Enabled"}]]></Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-sentinel-idref</Name>
+			<Value>4c879d73-9f1b-5507-840d-895077d6a800</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Fri, 27 Apr 2018 23:13:33 +0000</Value>
+		</MIMEField>
+		<Domain>SCVM</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to remediate this issue.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">waithidden "{pathname of system folder}\reg.exe" add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v "PromptOnSecureDesktop" /t REG_DWORD /d 1 /f</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>

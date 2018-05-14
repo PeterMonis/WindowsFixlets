@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>"Devices: Allowed to format and eject removable media to 'Administrators'</Title>
+		<Description><![CDATA[<div class=FixletMessage><TABLE><TBODY><TR><TD><p><code>This policy setting determines who is allowed to format and eject removable NTFS media. You can use This policy setting to prevent unauthorized users from removing data on one computer to access it on another computer on which they have local administrator privileges.</code><hr><p>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "ed28a189-ae22-cda4-258d-6d8cc8fdc583" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></TD></TR></TBODY></TABLE></div>]]></Description>
+		<Relevance><![CDATA[not exists 1 whose (exists (concatenation ", " of (it as string) of ((type of it = "REG_SZ") of it and ((if type of it = "REG_EXPAND_SZ" or type of it = "REG_MULTI_SZ" then preceding text of first "%00" of (it as string) else it as string) of it = ("0"))) of values "AllocateDASD" of keys "Software\Microsoft\Windows NT\CurrentVersion\Winlogon" of keys "HKEY_LOCAL_MACHINE" of native registry) whose (number of substrings separated by ", " whose (it is not "") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0))]]></Relevance>
+		<Category>Devices</Category>
+		<Source>Maxim's Hardening Guide</Source>
+		<SourceID>6-1</SourceID>
+		<SourceReleaseDate>2018-03-08</SourceReleaseDate>
+		<SourceSeverity>Medium</SourceSeverity>
+		<MIMEField>
+			<Name>x-fixlet-scm-control</Name>
+			<Value>6-1</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-id</Name>
+			<Value>debbe0c1-7893-195a-411e-ed7fd2403a9f</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-category</Name>
+			<Value>Devices</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-metadata</Name>
+			<Value>{"scm_parameters":{"PARAM_NAME":{"default_value":"","human_default_value":"","desired_value":"","human_desired_value":"Administrators","hidden":false,"title":"Setting:","type":"string","description":""},"Value":{"measured_value_analysis_property":1,"measured_value_analysis_idref":"ed28a189-ae22-cda4-258d-6d8cc8fdc583"}},"title":"6-1 : "Devices: Allowed to format and eject removable media to 'Administrators'","description":"This policy setting determines who is allowed to format and eject removable NTFS media. You can use This policy setting to prevent unauthorized users from removing data on one computer to access it on another computer on which they have local administrator privileges."}</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-os</Name>
+			<Value>OS-MULTI</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-sentinel-idref</Name>
+			<Value>4c2b71b6-6124-52e1-8c96-91d3c9e0840c</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Fri, 27 Apr 2018 23:13:33 +0000</Value>
+		</MIMEField>
+		<Domain>SCVM</Domain>
+		<Action ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to remediate this issue.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">waithidden "{pathname of system folder}\reg.exe" add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "AllocateDASD" /t REG_SZ /d "0" /f
+
+waithidden "{pathname of system folder}\reg.exe" add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "AllocateDASD" /t REG_SZ /d "0" /f /reg:64</ActionScript>
+		</Action>
+	</Fixlet>
+</BES>

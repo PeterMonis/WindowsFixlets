@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Account lockout threshold</Title>
+		<Description><![CDATA[<DIV class=FixletMessage>
+<TABLE>
+<TBODY>
+<TR>
+<TD>
+<P><CODE>Account lockout threshold<BR><BR>5*</CODE> 
+<HR>
+
+<P>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "c5585047-de8e-b4aa-f205-897ea6c2e382" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></P></TD></TR></TBODY></TABLE></DIV>]]></Description>
+		<Relevance><![CDATA[not exists 1 whose ((exists (concatenation ", " of (it as string) of (it <= (it as integer) of ("5")) of account lockout threshold of security database) whose (number of substrings separated by ", " whose (it is not "") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0) and exists (concatenation ", " of (it as string) of (it > (it as integer) of ("0")) of account lockout threshold of security database) whose (number of substrings separated by ", " whose (it is not "") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0)))]]></Relevance>
+		<Category>Account lockout policy</Category>
+		<Source>Maxim's Hardening Guide</Source>
+		<SourceID>2-2</SourceID>
+		<SourceReleaseDate>2018-02-22</SourceReleaseDate>
+		<SourceSeverity>Medium</SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<MIMEField>
+			<Name>x-fixlet-scm-control</Name>
+			<Value>SEG-12-2-2-7-2</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-id</Name>
+			<Value>ec164ab7-a606-897a-5024-265a904fc91d</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-category</Name>
+			<Value>Account lockout policy</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-os</Name>
+			<Value>OS-MULTI</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-metadata</Name>
+			<Value><![CDATA[{"scm_parameters":{"PARAM_NAME":{"default_value":"","human_default_value":"","desired_value":"","human_desired_value":"5*","hidden":false,"title":"Account lockout threshold","type":"string","description":""},"Value":{"measured_value_analysis_property":1,"measured_value_analysis_idref":"c5585047-de8e-b4aa-f205-897ea6c2e382"}},"title":"SEG-12-2-2-7-2 : Account lockout threshold","description":"Account lockout threshold<br>\t\t\t<br>5*"}]]></Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-sentinel-idref</Name>
+			<Value>4c879d73-9f1b-5507-840d-895077d6a800</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Fri, 27 Apr 2018 23:13:33 +0000</Value>
+		</MIMEField>
+		<Domain>SCVM</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to remediate this issue.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">delete "{name of drive of system folder}\573b3b8125f2567096c25371dbfd59ba.ini"
+createfile until HERE
+[Unicode]
+Unicode=yes
+[Version]
+signature="$CHICAGO$"
+Revision=1 
+[System Access]
+LockoutBadCount = {5}
+HERE
+copy __createfile "{name of drive of system folder}\573b3b8125f2567096c25371dbfd59ba.ini"
+waithidden "{pathname of system folder}\secedit.exe" /configure /db "{name of drive of system folder}\573b3b8125f2567096c25371dbfd59ba.sdb" /cfg "{name of drive of system folder}\573b3b8125f2567096c25371dbfd59ba.ini" /quiet
+delete "{name of drive of system folder}\573b3b8125f2567096c25371dbfd59ba.sdb"
+delete "{name of drive of system folder}\573b3b8125f2567096c25371dbfd59ba.ini"</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>

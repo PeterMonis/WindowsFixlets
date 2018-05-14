@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Retention method for System log</Title>
+		<Description><![CDATA[<DIV class=FixletMessage>
+<TABLE>
+<TBODY>
+<TR>
+<TD>
+<P><CODE>Retention method for System log<BR><BR>Overwrite events as needed</CODE> 
+<HR>
+
+<P>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "e07ebe5c-f1a6-d893-bcd1-7f899d1194a2" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></P></TD></TR></TBODY></TABLE></DIV>]]></Description>
+		<Relevance>not exists 1 whose (value "Retention" of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\System" of (if x64 of operating system then x64 registry else x32 registry)= 0)</Relevance>
+		<Category>Security Options – Event log</Category>
+		<Source>Maxim's Hardening Guide</Source>
+		<SourceID>5-9</SourceID>
+		<SourceReleaseDate>2018-02-22</SourceReleaseDate>
+		<SourceSeverity>Medium</SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<MIMEField>
+			<Name>x-fixlet-scm-control</Name>
+			<Value>SEG-12-2-2-3-9</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-id</Name>
+			<Value>64447532-95cd-5441-7dd8-a54351e2b37a</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-category</Name>
+			<Value>Security Options – Event log</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-os</Name>
+			<Value>OS-MULTI</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-metadata</Name>
+			<Value><![CDATA[{"scm_parameters":{"PARAM_NAME":{"default_value":"","human_default_value":"","desired_value":"","human_desired_value":"Overwrite events as needed","hidden":false,"title":"Retention method for System log","type":"string","description":""},"Value":{"measured_value_analysis_property":1,"measured_value_analysis_idref":"e07ebe5c-f1a6-d893-bcd1-7f899d1194a2"}},"title":"SEG-12-2-2-3-9 : Retention method for System log","description":"Retention method for System log<br>\t\t<br>Overwrite events as needed"}]]></Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-scm-sentinel-idref</Name>
+			<Value>4c879d73-9f1b-5507-840d-895077d6a800</Value>
+		</MIMEField>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Fri, 27 Apr 2018 23:13:33 +0000</Value>
+		</MIMEField>
+		<Domain>SCVM</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to remediate this issue.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">if {x64 of operating system as string = "True"}
+regset64 "[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\System]" "Retention"=dword:00000000
+else
+regset "[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\System]" "Retention"=dword:00000000
+endif</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>
