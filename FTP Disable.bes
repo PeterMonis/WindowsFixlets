@@ -7,7 +7,7 @@
 <TBODY>
 <TR>
 <TD>
-<P><CODE>FTP Disable TEST<BR><BR>Disable</CODE> 
+<P><CODE>FTP Disable<BR><BR>Disable</CODE> 
 <HR>
 
 <P>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "0e26b128-857b-5886-1784-aad4705dea0d" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></P></TD></TR></TBODY></TABLE></DIV>]]></Description>
