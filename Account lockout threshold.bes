@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
-		<Title>Account lockout threshold TEST</Title>
+		<Title>Account lockout threshold</Title>
 		<Description><![CDATA[<DIV class=FixletMessage>
 <TABLE>
 <TBODY>
@@ -11,7 +11,7 @@
 <HR>
 
 <P>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "c5585047-de8e-b4aa-f205-897ea6c2e382" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></P></TD></TR></TBODY></TABLE></DIV>]]></Description>
-		<Relevance><![CDATA[not exists 1 whose ((exists (concatenation ", " of (it as string) of (it <= (it as integer) of ("5")) of account lockout threshold of security database) whose (number of substrings separated by ", " whose (it is not "") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0) and exists (concatenation ", " of (it as string) of (it > (it as integer) of ("0")) of account lockout threshold of security database) whose (number of substrings separated by ", " whose (it is not "") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0)))]]></Relevance>
+		<Relevance><![CDATA[not exists 1 whose ((exists (concatenation ", " of (it as string) of (it <= (it as integer) of ("5")) of account lockout threshold of security database) whose (number of substrings separated by ", " whose (it is not "") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0) and exists (concatenation ", " of (it as string) of (it > (it as integer) of ("0")) of account lockout threshold of security database) whose (number of substrings separated by ", " whose (it is not "THIS IS A TEST") of it > 0 and number of substrings separated by ", " whose (it is not "") whose (it as boolean is False) of it = 0)))]]></Relevance>
 		<Category>Account lockout policy</Category>
 		<Source>Maxim's Hardening Guide Test</Source>
 		<SourceID>2-2</SourceID>
