@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
-		<Title>Computer Browser NEW TESTING</Title>
+		<Title>Computer Browser</Title>
 		<Description><![CDATA[<DIV class=FixletMessage>
 <TABLE>
 <TBODY>
@@ -11,7 +11,7 @@
 <HR>
 
 <P>After the system scan has been completed you can click on the following link to see the actual values configured on each system: <?relevance links of bes fixlets whose (analysis flag of it and mime field "X-Fixlet-SCM-Analysis-ID" of it = "ae4d00e6-a396-7557-b65d-ee78b1e3ef29" AND (if (custom site flag of site of current fixlet) then name of site of it = name of site of current fixlet else id of site of it = id of site of current fixlet) of it)?></P></TD></TR></TBODY></TABLE></DIV>]]></Description>
-		<Relevance>not exists 1 whose "NEW TESTING" (conjunction of (start type of it ="disabled" and State of it="Stopped") of service "Browser")</Relevance>
+		<Relevance>not exists 1 whose (conjunction of (start type of it ="disabled" and State of it="Stopped") of service "Browser")</Relevance>
 		<Category>Services</Category>
 		<Source>Maxim's Hardening Guide</Source>
 		<SourceID>1-8</SourceID>
